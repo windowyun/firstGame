@@ -59,6 +59,15 @@ public class GameManager : MonoBehaviour
     //    get { return player; }
     //}
 
+    [SerializeField]
+    EffectManager effectManager;
+
+    public EffectManager EffectManager
+    {
+        get { return effectManager; }
+    }
+
+
     private void Awake()
     {
         var objs = FindObjectsOfType<GameManager>();

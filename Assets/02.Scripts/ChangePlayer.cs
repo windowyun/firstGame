@@ -81,6 +81,7 @@ public class ChangePlayer : MonoBehaviour
             float dir = GameManager.Instance.Skull(0).transform.localScale.x > 0 ? 1f : -1f;
             GameManager.Instance.Skull(0).transform.localScale = new Vector3(4f * dir, 4f, 1f);
             camera2.SetActive(false);
+            camera1.transform.position = camera2.transform.position;
             camera1.SetActive(true);
             currentstats = true;
             GameManager.Instance.Skull(0).SetActive(true);
@@ -97,6 +98,7 @@ public class ChangePlayer : MonoBehaviour
             GameManager.Instance.Skull(1).transform.localScale = new Vector3(3f * dir , 3f, 1f);
             currentstats = false;
             camera1.SetActive(false);
+            camera2.transform.position = camera1.transform.position;
             camera2.SetActive(true);
             GameManager.Instance.Skull(1).SetActive(true);
             currentSkull = GameManager.Instance.Skull(1);

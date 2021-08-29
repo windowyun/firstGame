@@ -104,9 +104,20 @@ public class Enemy01 : Enemy
     public override void HitOn(int damage, Transform transform = null)
     {
         base.HitOn(damage);
-        usedTurn = true;
-        isAttack = false;
-        animator.SetTrigger("enemy01Hit");
+        hitNumber++;
+
+        if (!isSuperArmour && superAromour - hitNumber < 0)
+        {
+            isSuperArmour = true;
+            StartCoroutine(SuperArmourOn());
+        }
+
+        else
+        {
+            usedTurn = true;
+            isAttack = false;
+            animator.SetTrigger("enemy01Hit");
+        }
     }
 
     void Turn(float distance)
@@ -150,6 +161,13 @@ public class Enemy01 : Enemy
 
         rigid2D.velocity = new Vector2(dir * moveSpeed, rigid2D.velocity.y);
         animator.SetBool("enemy01Move", true);
+    }
+
+    IEnumerator SuperArmourOn()
+    {
+        yield return new WaitForSeconds(superAromourTime);
+        hitNumber = 0;
+        isSuperArmour = false;
     }
 
     /*

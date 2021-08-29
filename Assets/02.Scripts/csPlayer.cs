@@ -5,6 +5,7 @@ using UnityEngine;
 public class csPlayer : Actor
 {
     [SerializeField] float scale = 3f;
+    [SerializeField] Vector3 effectPoint;
 
     [Header("Move & Jump & Roll")]
     [SerializeField] float speed = 3.0f;
@@ -336,6 +337,8 @@ public class csPlayer : Actor
             currentHP = currentHP - damage;
 
             anim.SetTrigger("Hit");
+
+            GameManager.Instance.EffectManager.SpawnHitEffect(this.transform, effectPoint);
 
             StartCoroutine(HitWait(transform));
 
