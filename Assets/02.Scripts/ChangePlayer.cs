@@ -72,7 +72,7 @@ public class ChangePlayer : MonoBehaviour
 
     void PlayerChange()
     {
-        if (!currentstats && Input.GetKeyDown(KeyCode.Alpha1) && currentPlayer.IsJump && Time.time - changeTime >= changeCoolTime)
+        if (!currentstats && !currentPlayer.StopAct && Input.GetKeyDown(KeyCode.Alpha1) && currentPlayer.IsJump && Time.time - changeTime >= changeCoolTime)
         {
             changeTime = Time.time;
             GameManager.Instance.Skull(1).SetActive(false);
@@ -88,7 +88,7 @@ public class ChangePlayer : MonoBehaviour
             currentSkull = GameManager.Instance.Skull(0);
         }
 
-        else if (currentstats && Input.GetKeyDown(KeyCode.Alpha2) && currentPlayer.IsJump && Time.time - changeTime >= changeCoolTime)
+        else if (currentstats && !currentPlayer.StopAct && Input.GetKeyDown(KeyCode.Alpha2) && currentPlayer.IsJump && Time.time - changeTime >= changeCoolTime)
         {
             changeTime = Time.time;
             GameManager.Instance.Skull(0).SetActive(false);

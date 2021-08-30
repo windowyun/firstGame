@@ -42,6 +42,10 @@ public class csPlayer : Actor
     bool invincibilityOn = false;
 
     bool stopAct = false;
+    public bool StopAct
+    {
+        get { return stopAct; }
+    }
 
     //GameManager gameManager = new GameManager();
 
@@ -336,6 +340,9 @@ public class csPlayer : Actor
         {
             currentHP = currentHP - damage;
 
+            StopCoroutine(StunnedWait());
+            anim.SetBool("stunning", false);
+
             anim.SetTrigger("Hit");
 
             GameManager.Instance.EffectManager.SpawnHitEffect(this.transform, effectPoint);
@@ -369,6 +376,29 @@ public class csPlayer : Actor
         yield return null;
     }
 
+    public void Stunned()
+    {
+        anim.SetTrigger("Stun");
+        anim.SetBool("stunning", true);
+        stopAct = true;
+        StartCoroutine(StunnedWait());
+    }
+
+    IEnumerator StunnedWait()
+    {
+        yield return new WaitForSeconds(1f);
+        anim.SetBool("stunning", false);
+        stopAct = false;
+    }    
+
+    public void Knockback(Transform transform)
+    {
+        float direction = trans.position.x > transform.position.x ? 1 : -1;
+        rigid.velocity = new Vector2(0f, rigid.velocity.y);
+        rigid.AddForce(Vector2.right * direction * 2, ForceMode2D.Impulse);
+    }
+
+
     /*
     void OnDrawGizmos()
     {
@@ -398,5 +428,5 @@ public class csPlayer : Actor
         
     }
     */
-    
+
 }

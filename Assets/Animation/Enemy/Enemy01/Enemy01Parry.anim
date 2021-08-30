@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy01Stun
+  m_Name: Enemy01Parry
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,21 +20,27 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: cad7449f2b288c041b5dc9821a5a864e, type: 3}
+      value: {fileID: 21300000, guid: 13b60a64f3f100942b6abfcd7217471c, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 96d63c4ecc4742249b6a4c8967a83642, type: 3}
+      value: {fileID: 21300000, guid: bea3d6c60fc1fa949b68b524fe03385f, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: 3ff6701a950c36746bb00431817567fd, type: 3}
+      value: {fileID: 21300000, guid: a99d44cad86fe794d9193758aadc0fb5, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 2d949abb7c92f884a87ac1019aab2553, type: 3}
+      value: {fileID: 21300000, guid: 225db7beee0ccdb4586e7c1206e36603, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: 70b9ff65f36ee0d45b45829665d03f40, type: 3}
+      value: {fileID: 21300000, guid: 6c3fbdaa0ea35f34e82d4f804d0ea26a, type: 3}
     - time: 0.41666666
-      value: {fileID: 21300000, guid: 6a88a20efd9a3ec48b9aa31427824b21, type: 3}
+      value: {fileID: 21300000, guid: f57ca3084fb66674c8846ba9b296fef2, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: 24bebd4920736ce4282af1dd68ee5ace, type: 3}
+      value: {fileID: 21300000, guid: e84df9c871929c041aa6ccf2ae493905, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300000, guid: 6746c6f650734ea41876becf7f005f62, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: a9b17a34d4599e64da357f66fa72257b, type: 3}
+    - time: 0.75
+      value: {fileID: 21300000, guid: b4e0605045c337546a2699fa68c13c92, type: 3}
     - time: 3
-      value: {fileID: 21300000, guid: 24bebd4920736ce4282af1dd68ee5ace, type: 3}
+      value: {fileID: 21300000, guid: b4e0605045c337546a2699fa68c13c92, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -54,14 +60,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: cad7449f2b288c041b5dc9821a5a864e, type: 3}
-    - {fileID: 21300000, guid: 96d63c4ecc4742249b6a4c8967a83642, type: 3}
-    - {fileID: 21300000, guid: 3ff6701a950c36746bb00431817567fd, type: 3}
-    - {fileID: 21300000, guid: 2d949abb7c92f884a87ac1019aab2553, type: 3}
-    - {fileID: 21300000, guid: 70b9ff65f36ee0d45b45829665d03f40, type: 3}
-    - {fileID: 21300000, guid: 6a88a20efd9a3ec48b9aa31427824b21, type: 3}
-    - {fileID: 21300000, guid: 24bebd4920736ce4282af1dd68ee5ace, type: 3}
-    - {fileID: 21300000, guid: 24bebd4920736ce4282af1dd68ee5ace, type: 3}
+    - {fileID: 21300000, guid: 13b60a64f3f100942b6abfcd7217471c, type: 3}
+    - {fileID: 21300000, guid: bea3d6c60fc1fa949b68b524fe03385f, type: 3}
+    - {fileID: 21300000, guid: a99d44cad86fe794d9193758aadc0fb5, type: 3}
+    - {fileID: 21300000, guid: 225db7beee0ccdb4586e7c1206e36603, type: 3}
+    - {fileID: 21300000, guid: 6c3fbdaa0ea35f34e82d4f804d0ea26a, type: 3}
+    - {fileID: 21300000, guid: f57ca3084fb66674c8846ba9b296fef2, type: 3}
+    - {fileID: 21300000, guid: e84df9c871929c041aa6ccf2ae493905, type: 3}
+    - {fileID: 21300000, guid: 6746c6f650734ea41876becf7f005f62, type: 3}
+    - {fileID: 21300000, guid: a9b17a34d4599e64da357f66fa72257b, type: 3}
+    - {fileID: 21300000, guid: b4e0605045c337546a2699fa68c13c92, type: 3}
+    - {fileID: 21300000, guid: b4e0605045c337546a2699fa68c13c92, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -72,7 +81,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -87,15 +96,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.16666667
-    functionName: StunOn
+  - time: 0.6666667
+    functionName: ParryOn
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 3
-    functionName: StunOff
+    functionName: ParryOff
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

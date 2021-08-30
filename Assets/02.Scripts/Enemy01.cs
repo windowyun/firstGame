@@ -23,7 +23,10 @@ public class Enemy01 : Enemy
     bool usedTurn = false;
     bool firstTurn = true;
     bool moveOn = false;
+    bool firstAttack = true;
     bool isAttack = false;
+    bool isStun = false;
+    bool isParry = false;
     
     float attackTime = 0f;
 
@@ -52,13 +55,14 @@ public class Enemy01 : Enemy
                 animator.SetBool("enemy01Move", false);
                 rigid2D.velocity = new Vector2(0f, rigid2D.velocity.y);
 
-                if (Time.time - attackTime > attackDelay)
+                if (!isAttack && Time.time - attackTime > attackDelay)
                 {
                     attackTime = Time.time;
-
                     isAttack = true;
                     
-                    animator.SetTrigger("enemy01Attack");
+                    StartCoroutine(Patten());
+
+                    //animator.SetTrigger("enemy01Attack");
                 }
             }
 
@@ -101,23 +105,58 @@ public class Enemy01 : Enemy
         isAttack = false;
     }
 
+    void StunOn()
+    {
+        isStun = true;
+    }
+    void StunOff()
+    {
+        isStun = false;
+    }
+
+    void ParryOn()
+    {
+        isParry = true;
+    }
+    void ParryOff()
+    {
+        isParry = false;
+    }
+
     public override void HitOn(int damage, Transform transform = null)
     {
-        base.HitOn(damage);
         hitNumber++;
 
-        if (!isSuperArmour && superAromour - hitNumber < 0)
+        if (isStun)
         {
-            isSuperArmour = true;
-            StartCoroutine(SuperArmourOn());
+            base.HitOn(damage / 2);
+            GameManager.Instance.ChangeManager.CurrentPlayer.Stunned();
+        }
+
+        else if (isParry)
+        {
+            GameManager.Instance.ChangeManager.CurrentPlayer.Knockback(this.transform);
         }
 
         else
         {
-            usedTurn = true;
-            isAttack = false;
-            animator.SetTrigger("enemy01Hit");
+            base.HitOn(damage);
+
+            if (!isSuperArmour && superAromour - hitNumber <= 0)
+            {
+                usedTurn = true;
+                isSuperArmour = true;
+                StartCoroutine(SuperArmourOn());
+            }
+
+            else
+            {
+                usedTurn = true;
+                isAttack = false;
+                animator.SetTrigger("enemy01Hit");
+            }
         }
+        
     }
 
     void Turn(float distance)
@@ -168,6 +207,35 @@ public class Enemy01 : Enemy
         yield return new WaitForSeconds(superAromourTime);
         hitNumber = 0;
         isSuperArmour = false;
+    }
+
+    IEnumerator Patten()
+    {
+
+        int pattenNumber = Random.Range(0, 2);
+
+        if (firstAttack)
+        {
+            firstAttack = false;
+            pattenNumber = 0;
+        }
+
+        switch (pattenNumber)
+        {
+            case 0:
+                animator.SetTrigger("enemy01Attack");
+                break;
+
+            case 1:
+                animator.SetTrigger("enemy01Stun");
+                break;
+
+            case 2:
+                animator.SetTrigger("enemy01Parry");
+                break;
+        }
+
+        yield return null;
     }
 
     /*
